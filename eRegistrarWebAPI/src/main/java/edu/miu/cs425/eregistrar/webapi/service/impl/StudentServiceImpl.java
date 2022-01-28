@@ -1,8 +1,8 @@
-package edu.miu.cs425.eregistrar.eregistrar.service.impl;
+package edu.miu.cs425.eregistrar.webapi.service.impl;
 
-import edu.miu.cs425.eregistrar.eregistrar.model.Student;
-import edu.miu.cs425.eregistrar.eregistrar.repository.StudentRepository;
-import edu.miu.cs425.eregistrar.eregistrar.service.StudentService;
+import edu.miu.cs425.eregistrar.webapi.model.Student;
+import edu.miu.cs425.eregistrar.webapi.repository.StudentRepository;
+import edu.miu.cs425.eregistrar.webapi.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +20,13 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findAll();
     }
 
-    public void deleteStudent(Long studentId) {
+    public boolean deleteStudent(Long studentId) {
         Student student = findById(studentId);
         if (student != null) {
             studentRepository.delete(student);
+            return true;
         }
+        return false;
     }
 
     public Student createStudent(Student student) {
