@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin(originPatterns = "*", allowedHeaders = "*")
 @RequestMapping({"/eregistrar/api/student", "/api/student"})
 public class StudentController {
     private final StudentService studentService;
